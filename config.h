@@ -36,7 +36,7 @@ static const char *const autostart_always[] = {
     "sh", "-c", "for id in $(xinput list | grep \"pointer\" | cut -d '=' -f 2 | cut -f 1); do xinput set-prop $id 'libinput Accel Profile Enabled' 0 1 0; done", NULL, /* Disables Mouse Acceleration */
     "setxkbmap", "-option", "ctrl:swapcaps", NULL, /* Swap CapsLock and Ctrl */
     "xset", "mouse", "0", "0", NULL, /* Disable Mouse Acceleration I think */
-    "feh", "--bg-fill", "~/Downloads/wallpaper.png", NULL, /* Background */
+    "feh", "--bg-fill", HOME"/Downloads/wallpaper.png", NULL, /* Background */
     "sh", "-c", "MONITORCOUNT=\"$(xrandr --query | grep \"\bconnected\b\" | wc -l)\"\nif [ $MONITORCOUNT == 2 ]; then\nxrandr --output eDP --mode 1920x1080 --pos 0x0 --scale 1x1\nxrandr --output HDMI-A-0 --mode 1920x1080 --right-of eDP --scale 1x1\nelse\nxrandr --auto\nfi", NULL, /* Sets up monitor */
 	NULL /* terminate */
 };
