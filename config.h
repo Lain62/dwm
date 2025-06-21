@@ -133,6 +133,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
     { MODKEY|ShiftMask,             XK_r,      autostart_always_exec_bind, {0} },
+    { MODKEY|ShiftMask,             XK_x,      spawn,          {.v = dmenuquitcmd } },
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 };
 
