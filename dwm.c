@@ -2317,10 +2317,11 @@ updatesizehints(Client *c)
 void
 updatestatus(void)
 {
+    updatesystray();
 	if (!gettextprop(root, XA_WM_NAME, stext, sizeof(stext)))
-		strcpy(stext, "dwm-"VERSION);
+		strcpy(stext, "Arf");
 	drawbar(selmon);
-	updatesystray();
+
 }
 
 
