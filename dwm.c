@@ -346,10 +346,10 @@ autostart_always_exec(void) {
     /* Kill child processes first */
     size_t j;
     
-	for (j = 0; j < autostart_len; j++) {
-		if (0 < autostart_pids[j]) {
-			kill(autostart_pids[j], SIGTERM);
-			waitpid(autostart_pids[j], NULL, 0);
+	for (j = 0; j < autostart_always_len; j++) {
+		if (0 < autostart_always_pids[j]) {
+			kill(autostart_always_pids[j], SIGTERM);
+			waitpid(autostart_always_pids[j], NULL, 0);
 		}
 	}
 
