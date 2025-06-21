@@ -263,6 +263,8 @@ static int xerrordummy(Display *dpy, XErrorEvent *ee);
 static int xerrorstart(Display *dpy, XErrorEvent *ee);
 static void zoom(const Arg *arg);
 static void autostart_exec(void);
+static void autostart_always_exec(void);
+static void autostart_always_exec_bind(const Arg *arg);
 
 /* variables */
 static Systray *systray = NULL;
@@ -310,9 +312,13 @@ struct NumTags { char limitexceeded[LENGTH(tags) > 31 ? -1 : 1]; };
 static pid_t *autostart_pids;
 static size_t autostart_len;
 
+/* dwm will keep pid's of processes from autostart array and kill them at keybind */
+static pid_t *autostart_always_pids;
+static size_t autostart_always_len;
+
 /* execute command from autostart array */
 static void
-autostart_exec() {
+autostart_exec(void) {
 	const char *const *p;
 	size_t i = 0;
 
@@ -332,6 +338,46 @@ autostart_exec() {
 		/* skip arguments */
 		while (*++p);
 	}
+}
+
+/* execute command from autostart array but always */
+static void
+autostart_always_exec(void) {
+    /* Kill child processes first */
+    size_t j;
+    
+	for (j = 0; j < autostart_len; j++) {
+		if (0 < autostart_pids[j]) {
+			kill(autostart_pids[j], SIGTERM);
+			waitpid(autostart_pids[j], NULL, 0);
+		}
+	}
+
+    /* Run Processes */
+	const char *const *p;
+	size_t i = 0;
+
+	/* count entries */
+	for (p = autostart_always; *p; autostart_always_len++, p++)
+		while (*++p);
+
+	autostart_always_pids = malloc(autostart_always_len * sizeof(pid_t));
+	for (p = autostart_always; *p; i++, p++) {
+		if ((autostart_always_pids[i] = fork()) == 0) {
+			setsid();
+			execvp(*p, (char *const *)p);
+			fprintf(stderr, "dwm: execvp %s\n", *p);
+			perror(" failed");
+			_exit(EXIT_FAILURE);
+		}
+		/* skip arguments */
+		while (*++p);
+	}
+}
+
+static void
+autostart_always_exec_bind(const Arg *arg) {
+    autostart_always_exec();
 }
 
 /* function implementations */
@@ -2564,6 +2610,7 @@ main(int argc, char *argv[])
 		die("dwm: cannot open display");
 	checkotherwm();
     autostart_exec();
+    autostart_always_exec();
     setup();
 #ifdef __OpenBSD__
 	if (pledge("stdio rpath proc exec", NULL) == -1)
