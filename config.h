@@ -9,18 +9,35 @@ static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
-static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "monospace:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
-static const char col_gray1[]       = "#222222";
-static const char col_gray2[]       = "#444444";
-static const char col_gray3[]       = "#bbbbbb";
-static const char col_gray4[]       = "#eeeeee";
-static const char col_cyan[]        = "#005577";
+static const int topbar             = 0;        /* 0 means bottom bar */
+static const char *fonts[]          = { "Iosevka:size=12" };
+static const char dmenufont[]       = "Iosevka:size=12";
+// static const char col_gray1[]       = "#222222";
+// static const char col_gray2[]       = "#444444";
+// static const char col_gray3[]       = "#bbbbbb";
+// static const char col_gray4[]       = "#eeeeee";
+// static const char col_cyan[]        = "#005577";
+static const char rosevu_black[] = "#1B2021";
+static const char rosevu_black_lighter[] = "#30343F";
+static const char rosevu_pink[] = "#f8a9b4";
+static const char rosevu_pink_darker[] = "#a24174";
+static const char rosevu_red[] = "#B23350";
+static const char rosevu_white[] = "#F0F0F0";
+static const char rosevu_yellow[] = "#EFEC9b";
+static const char rosevu_blue[] = "#8282fe";
+static const char rosevu_gray[] = "#C2C2C2";
+static const char rosevu_gray_lighter[] = "#E2E2E2";
+static const char rosevu_cream[] = "#FFD9DA";
+static const char rosevu_cream_darker[] = "#E3CEB4";
+static const char rosevu_green[] = "#3CD37D";
+static const char rosevu_purple[] = "#B7A0FF";
+static const char rosevu_cyan[] ="#8FE1FF";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
-	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+	// [SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
+	// [SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
+    [SchemeNorm] = { rosevu_white, rosevu_black_lighter, rosevu_pink_darker },
+	[SchemeSel]  = { rosevu_white, rosevu_pink,  rosevu_pink  },
 };
 
 static const char *const autostart[] = {
@@ -81,7 +98,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", rosevu_black_lighter, "-nf", rosevu_white, "-sb", rosevu_pink, "-sf", rosevu_white, NULL };
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "st", NULL };
 
