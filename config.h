@@ -12,21 +12,21 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Iosevka:size=12" };
 static const char dmenufont[]       = "Iosevka:size=12";
-static const char rosevu_black[] = "#1B2021";
+static const char rosevu_black[]         = "#1B2021";
 static const char rosevu_black_lighter[] = "#30343F";
-static const char rosevu_pink[] = "#f8a9b4";
-static const char rosevu_pink_darker[] = "#a24174";
-static const char rosevu_red[] = "#B23350";
-static const char rosevu_white[] = "#F0F0F0";
-static const char rosevu_yellow[] = "#EFEC9b";
-static const char rosevu_blue[] = "#8282fe";
-static const char rosevu_gray[] = "#C2C2C2";
-static const char rosevu_gray_lighter[] = "#E2E2E2";
-static const char rosevu_cream[] = "#FFD9DA";
-static const char rosevu_cream_darker[] = "#E3CEB4";
-static const char rosevu_green[] = "#3CD37D";
-static const char rosevu_purple[] = "#B7A0FF";
-static const char rosevu_cyan[] ="#8FE1FF";
+static const char rosevu_pink[]          = "#f8a9b4";
+static const char rosevu_pink_darker[]   = "#a24174";
+static const char rosevu_red[]           = "#B23350";
+static const char rosevu_white[]         = "#F0F0F0";
+static const char rosevu_yellow[]        = "#EFEC9b";
+static const char rosevu_blue[]          = "#8282fe";
+static const char rosevu_gray[]          = "#C2C2C2";
+static const char rosevu_gray_lighter[]  = "#E2E2E2";
+static const char rosevu_cream[]         = "#FFD9DA";
+static const char rosevu_cream_darker[]  = "#E3CEB4";
+static const char rosevu_green[]         = "#3CD37D";
+static const char rosevu_purple[]        = "#B7A0FF";
+static const char rosevu_cyan[]          = "#8FE1FF";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
     [SchemeNorm] = { rosevu_white, rosevu_black_lighter, rosevu_pink_darker },
@@ -109,7 +109,7 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-	{ MODKEY,                       XK_Return, zoom,           {0} },
+	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY|ShiftMask,             XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} },
