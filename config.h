@@ -43,11 +43,9 @@ static const char *const autostart[] = {
 };
 
 static const char *const autostart_always[] = {
-    "sh", "-c", "for id in $(xinput list | grep \"pointer\" | cut -d '=' -f 2 | cut -f 1); do xinput set-prop $id 'libinput Accel Profile Enabled' 0 1 0; done", NULL, /* Disables Mouse Acceleration */
-    "setxkbmap", "-option", "ctrl:swapcaps", NULL, /* Swap CapsLock and Ctrl */
-    "xset", "mouse", "0", "0", NULL, /* Disable Mouse Acceleration I think */
     "feh", "--bg-fill", HOME"/Downloads/wallpaper.png", NULL, /* Background */
-    "sh", "-c", "(( $(xrandr --query | grep \"\bconnected\b\" | wc -l) == 2 )) && (xrandr --output eDP --mode 1920x1080 --pos 0x0 --scale 1x1; xrandr --output HDMI-A-0 --mode 1920x1080 --right-of eDP --scale 1x1) || xrandr --auto", NULL, /* Sets up monitor */
+    "sh", "-c", HOME"/.scripts/monitor", NULL, /* Sets up monitor */
+    "sh", "-c", HOME"/.scripts/startup", NULL, /* Sets up keys */
 	NULL /* terminate */
 };
 
@@ -93,7 +91,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", rosevu_black_lighter, "-nf", rosevu_white, "-sb", rosevu_pink, "-sf", rosevu_white, NULL };
 
 // TODO: turn this into a bash script that you will call
-static const char *dmenuquitcmd[] = { "RES=$(echo -e \"Reboot\nShutdown\" | ", "dmenu", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", rosevu_black_lighter, "-nf", rosevu_white, "-sb", rosevu_pink, "-sf", rosevu_white, ") && if [[ \"$RES\" == \"Reboot\" ]]; then systemctl reboot ; elif [[ \"$RES\" == \"Shutdown\" ]] ; then systemctl poweroff; fi", NULL };
+// static const char *dmenuquitcmd[] = { "RES=$(echo -e \"Reboot\nShutdown\" | ", "dmenu", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", rosevu_black_lighter, "-nf", rosevu_white, "-sb", rosevu_pink, "-sf", rosevu_white, ") && if [[ \"$RES\" == \"Reboot\" ]]; then systemctl reboot ; elif [[ \"$RES\" == \"Shutdown\" ]] ; then systemctl poweroff; fi", NULL };
 
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
 static const char *termcmd[]  = { "st", NULL };
@@ -133,7 +131,7 @@ static const Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
     { MODKEY|ShiftMask,             XK_r,      autostart_always_exec_bind, {0} },
-    { MODKEY|ShiftMask,             XK_x,      spawn,          {.v = dmenuquitcmd } },
+    // { MODKEY|ShiftMask,             XK_x,      spawn,          {.v = dmenuquitcmd } },
 	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
 };
 
