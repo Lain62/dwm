@@ -94,7 +94,7 @@ static const char *dmenucmd[] = { "dmenu", "-m", dmenumon, "-i", "-fn", dmenufon
 // static const char *dmenuquitcmd[] = { "RES=$(echo -e \"Reboot\nShutdown\" | ", "dmenu", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", rosevu_black_lighter, "-nf", rosevu_white, "-sb", rosevu_pink, "-sf", rosevu_white, ") && if [[ \"$RES\" == \"Reboot\" ]]; then systemctl reboot ; elif [[ \"$RES\" == \"Shutdown\" ]] ; then systemctl poweroff; fi", NULL };
 
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
-static const char *termcmd[]  = { "st", NULL };
+static const char *termcmd[]  = { "alacritty", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
