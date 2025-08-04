@@ -10,7 +10,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka:size=12" };
+static const char *fonts[]          = { "Iosevka:size=16" };
 static const char dmenufont[]       = "Iosevka:size=12";
 static const char rosevu_black[]         = "#1B2021";
 static const char rosevu_black_lighter[] = "#30343F";
@@ -36,16 +36,18 @@ static const char *colors[][3]      = {
 static const char *const autostart[] = {
     "dunst", NULL, /* Notification App */
     "nm-applet", NULL, /* Network Manager App */
+   	// "wireplumber", NULL, /* Audio */
     "pipewire", NULL, /* Audio */
-    "pipewire-pulse", NULL, /* Audio */
+    // "pipewire-pulse", NULL, /* Audio */
     "xss-lock", "--transfer-sleep-lock", "--", "i3lock", "--nofork", NULL, /* Sets up lockscreen to i3lock, TODO: Change to sumn more secure */
 	NULL /* terminate */
 };
 
 static const char *const autostart_always[] = {
     "feh", "--bg-fill", HOME"/Downloads/wallpaper.png", NULL, /* Background */
-    "sh", "-c", HOME"/.scripts/monitor", NULL, /* Sets up monitor */
-    "sh", "-c", HOME"/.scripts/startup", NULL, /* Sets up keys */
+    HOME"/.scripts/monitor", NULL, /* Sets up monitor */
+    HOME"/.scripts/startup", NULL, /* Sets up keys */
+    HOME"/.scripts/dwm_bar", NULL, /* Sets up the dwm bar*/
 	NULL /* terminate */
 };
 
@@ -59,7 +61,8 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
 	/* { "Gimp",     NULL,       NULL,       0,            1,           -1 }, */
-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
+	/*{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },*/
+	{}
 };
 
 /* layout(s) */
