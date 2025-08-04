@@ -1479,6 +1479,15 @@ quit(const Arg *arg)
 		}
 	}
 
+    
+	size_t j;
+    for (j = 0; j < autostart_always_len; j++) {
+		if (0 < autostart_always_pids[j]) {
+			kill(autostart_always_pids[j], SIGTERM);
+			waitpid(autostart_always_pids[j], NULL, 0);
+		}
+	}
+
 	running = 0;
 }
 
