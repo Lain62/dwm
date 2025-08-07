@@ -12,8 +12,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Iosevka:size=16" };
 static const char dmenufont[]       = "Iosevka:size=12";
-static const char rosevu_black[]         = "#1B2021";
-static const char rosevu_black_lighter[] = "#30343F";
+static const char rosevu_black_darker[]  = "#1B2021";
+static const char rosevu_black[]         = "#30343F";
 static const char rosevu_pink[]          = "#f8a9b4";
 static const char rosevu_pink_darker[]   = "#a24174";
 static const char rosevu_red[]           = "#B23350";
@@ -29,7 +29,7 @@ static const char rosevu_purple[]        = "#B7A0FF";
 static const char rosevu_cyan[]          = "#8FE1FF";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-    [SchemeNorm] = { rosevu_white, rosevu_black_lighter, rosevu_pink_darker },
+    [SchemeNorm] = { rosevu_white, rosevu_black, rosevu_pink_darker },
 	[SchemeSel]  = { rosevu_black, rosevu_pink,  rosevu_pink  },
 };
 
