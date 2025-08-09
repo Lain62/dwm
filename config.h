@@ -10,7 +10,7 @@ static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display 
 static const int showsystray        = 1;        /* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 0;        /* 0 means bottom bar */
-static const char *fonts[]          = { "Iosevka:size=14" };
+static const char *fonts[]          = { "ZedMono Nerd Font:size=14" };
 static const char dmenufont[]       = "Iosevka:size=12";
 static const char rosevu_black_darker[]  = "#1B2021";
 static const char rosevu_black[]         = "#30343F";
@@ -91,13 +91,13 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", rosevu_black_lighter, "-nf", rosevu_white, "-sb", rosevu_pink, "-sf", rosevu_white, NULL };
+static const char *dmenucmd[] = { "dmenu", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", rosevu_black, "-nf", rosevu_white, "-sb", rosevu_pink, "-sf", rosevu_white, NULL };
 
 // TODO: turn this into a bash script that you will call
 // static const char *dmenuquitcmd[] = { "RES=$(echo -e \"Reboot\nShutdown\" | ", "dmenu", "-m", dmenumon, "-i", "-fn", dmenufont, "-nb", rosevu_black_lighter, "-nf", rosevu_white, "-sb", rosevu_pink, "-sf", rosevu_white, ") && if [[ \"$RES\" == \"Reboot\" ]]; then systemctl reboot ; elif [[ \"$RES\" == \"Shutdown\" ]] ; then systemctl poweroff; fi", NULL };
 
 static const char *roficmd[] = { "rofi", "-show", "drun", NULL };
-static const char *termcmd[]  = { "alacritty", NULL };
+static const char *termcmd[]  = { "st", NULL };
 
 static const Key keys[] = {
 	/* modifier                     key        function        argument */
